@@ -1,13 +1,20 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import { useAuth } from '../../hooks/auth';
 
 import { Avatar } from '../Avatar';
 import { styles } from './styles';
 
+function Capitalize(str: string) {
+	return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 export function Profile() {
+	const { user } = useAuth();
+
 	return (
 		<View style={styles.container}>
-			<Avatar urlImage="https://avatars.githubusercontent.com/u/73559465?v=4"/>
+			<Avatar urlImage={user.avatar}/>
 
 			<View>
 				<View style={styles.user}>
@@ -16,7 +23,7 @@ export function Profile() {
 					</Text>
 
 					<Text style={styles.username}>
-						Sam
+						{ Capitalize(user.firstName) }!
 					</Text>
 				</View>
 
