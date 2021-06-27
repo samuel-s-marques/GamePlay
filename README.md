@@ -38,6 +38,7 @@ Aplicativo para lhe ajudar a conectar-se e organizar o momento de diversão para
 -   [ ] Alteração de banner do servidor
 -   [ ] Remoção de servidores da Home
 -   [x] Verificação de inserção de dados na criação do appointment
+-   [ ] Limitar data e hora
 
 ## Layout
 
