@@ -3,7 +3,7 @@ import { Fontisto } from '@expo/vector-icons';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import { Background } from '../../components/Background';
 import { Header } from '../../components/Header';
-import { ImageBackground, Text, View, FlatList } from 'react-native';
+import { ImageBackground, Text, View, FlatList, Share } from 'react-native';
 import { theme } from '../../global/styles/theme';
 
 import { styles } from './styles';
@@ -14,6 +14,13 @@ import { ListDivider } from '../../components/ListDivider';
 import { ButtonIcon } from '../../components/ButtonIcon';
 
 export function AppointmentDetails() {
+	function handleShareClick() {
+		Share.share({
+			title: "Compartilhe",
+			message:"isso é uma mensagem",
+		})
+	} 
+
 	const members = [
 		{
 			id: '1',
@@ -32,7 +39,7 @@ export function AppointmentDetails() {
 			username: 'Rakesh',
 			avatar_url: 'https://i.imgur.com/zvecWDr.jpeg',
 			status: 'online'
-		}
+		},
 	];
 
 	return (
@@ -40,7 +47,7 @@ export function AppointmentDetails() {
 			<Header
 				title="Detalhes"
 				action={
-					<BorderlessButton>
+					<BorderlessButton onPress={handleShareClick}>
 						<Fontisto
 							name="share"
 							size={24}
