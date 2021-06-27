@@ -5,8 +5,12 @@ import { Rajdhani_700Bold, Rajdhani_500Medium } from '@expo-google-fonts/rajdhan
 import AppLoading from 'expo-app-loading';
 
 import { Routes } from './src/routes';
-import { StatusBar } from 'react-native';
+import { StatusBar, LogBox } from 'react-native';
 import { Background } from './src/components/Background';
+
+import { AuthProvider } from './src/hooks/auth';
+
+LogBox.ignoreLogs(['You are not currently signed in to Expo on your development machine.'])
 
 export default function App() {
 	const [fontsLoaded] = useFonts({
@@ -28,7 +32,9 @@ export default function App() {
 				translucent
 			/>
 
-			<Routes />
+			<AuthProvider>
+				<Routes />
+			</AuthProvider>
 		</Background>
 	);
 }
