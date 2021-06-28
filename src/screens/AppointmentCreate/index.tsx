@@ -53,21 +53,44 @@ export function AppointmentCreate() {
 	}
 
 	async function handleSave() {
-		const newAppointment = {
-			id: uuid.v4(),
-			guild,
-			category,
-			date: `${day}/${month} às ${hour}:${minute}h`,
-			description
-		};
+		let missing_data = ''
 
-		const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
-		const appointments = storage ? JSON.parse(storage) : [];
+		if (!guild) {
+			missing_data += 'Falta escolher um servidor!\n';
+		}
 
-		await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([
-			...appointments, newAppointment]))
+		if (!category) {
+			missing_data += 'Falta escolher uma categoria!\n';
+		}
 
-		navigation.navigate('Home')
+		if (!day || !month || !hour || !minute) {
+			missing_data += 'Falta escolher uma data!\n'
+		}
+
+		if (!description) {
+			missing_data += 'Falta escolher uma descrição!\n'
+		}
+
+		if (missing_data !== '') {
+			Alert.alert('Erro!', missing_data)
+		} else {
+			const newAppointment = {
+				id: uuid.v4(),
+				guild,
+				category,
+				date: `${day}/${month} às ${hour}:${minute}h`,
+				description
+			};
+	
+			const storage = await AsyncStorage.getItem(COLLECTION_APPOINTMENTS);
+			const appointments = storage ? JSON.parse(storage) : [];
+	
+			await AsyncStorage.setItem(COLLECTION_APPOINTMENTS, JSON.stringify([
+				...appointments, newAppointment]))
+	
+			navigation.navigate('Home')
+		}
+
 	}
 
 	return (

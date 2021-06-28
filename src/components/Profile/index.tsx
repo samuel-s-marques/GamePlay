@@ -29,7 +29,7 @@ export function Profile() {
 
 	return (
 		<View style={styles.container}>
-			<RectButton>
+			<RectButton onPress={handleSignOut}>
 				<Avatar urlImage={user.avatar}/>
 			</RectButton>
 
