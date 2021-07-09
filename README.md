@@ -1,4 +1,4 @@
-![img](https://i.imgur.com/QnOLokI.png)
+![img](image.jpg)
 
 # GamePlay
 Aplicativo para lhe ajudar a conectar-se e organizar o momento de diversão para jogar com os amigos. Crie grupos para jogar seus games favoritos com seus amigos com esse App que possui autenticação com Discord. 
